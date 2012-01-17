@@ -21,7 +21,10 @@ module ActsAsTaggableOn
       
       private
       def like_operator
-        using_postgresql? ? 'ILIKE' : 'LIKE'
+        # I changed this because I want to be able to create duplicate tags
+        # with different capitalizations. LIKE in POSTGRES is already case-sensitive,
+        # while for mysql I had to add the 'binary' keyword.
+        using_postgresql? ? 'LIKE' : 'LIKE binary'
       end
 
       # escape _ and % characters in strings, since these are wildcards in SQL.
