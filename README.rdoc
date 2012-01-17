@@ -209,6 +209,18 @@ If you want tags to be saved parametrized (you can redefine to_param as well):
 
   ActsAsTaggableOn.force_parameterize = true
 
+########### BELOW IS WORK IN PROGRESS - DON'T USE YET #################################
+
+If you want to differentiate between tags based on capitalization, so that "TAG" and "tag" are unique tags in your database, add 
+  ActsAsTaggableOn.allow_duplicate_tags_for_case_sensitivity = true
+
+NOTE: This WILL create duplicate tags in the database, so only use this if you want to the same tags with different capitalization
+in your database, as in the example above. When using this gem in production, I could not edit the existing tags to have different 
+capitalization, so if I messed up and forgot to capitalize a tag, I would no longer be able to create a brand new tag with the same
+text and different capitalization. I think having this setting is better than going into the database to change the capitalization
+manually.
+##############################################################################
+
 
 == Contributors
 
