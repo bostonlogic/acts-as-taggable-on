@@ -17,7 +17,7 @@ module ActsAsTaggableOn
   @@force_parameterize = false
 
   mattr_accessor :remove_unused_tags
-  self.remove_unused_tags = false
+  self.remove_unused_tags = true
 
   def self.glue
     @@delimiter.ends_with?(" ") ? @@delimiter : "#{@@delimiter} "
